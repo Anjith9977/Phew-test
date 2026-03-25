@@ -1,62 +1,78 @@
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faInstagram, faLinkedin, faYoutube } from '@fortawesome/free-brands-svg-icons'
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook, faInstagram, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 function Footer() {
-    return (
-        <div className='p-4'>
+  return (
+    <div className="bg-black text-white pt-16">
 
-            <div className='w-full h-full rounded-t-4xl bg-[#24286B] text-white'>
+      <div className="max-w-6xl mx-auto px-4">
 
-                <div className='grid grid-cols-1  sm:grid-cols-2  md:grid-cols-4 p-16 pt-10'>
+        <div className="grid md:grid-cols-3 gap-6 text-center">
 
-                    <div className='mx-10 max-sm:ms-1'>
-                        <h1 className='text-6xl font-bold mb-6 font-mono'>LOGO</h1>
-                        <p className='text-xl'>Shaping the UAE’s future <br />with precision & passion</p>
-                    </div>
+          <div className="border border-[#C5A059] rounded-xl p-6">
+            <h3 className="text-[#C5A059] text-sm mb-4 tracking-wider">
+              CONNECT WITH US
+            </h3>
 
-                    {/* Linkss */}
-                    <div className='space-y-3 ms-24 font-light max-sm:ms-1 max-sm:my-10'>
-                        <h2 className='mb-5 font-bold'>Useful Links</h2>
-                        <p>Home</p>
-                        <p>About Us</p>
-                        <p>Our Services</p>
-                        <p>Our Projects</p>
-                        <p>Testimonials</p>
-                    </div>
-
-                    {/* Support */}
-                    <div className='space-y-3 font-light'>
-                        <h2 className='mb-5 font-bold'>Support</h2>
-                        <p>Privacy policy</p>
-                        <p>Terms & Conditions</p>
-                        <p>Contact Us</p>
-                    </div>
-
-                    {/* Find Us */}
-                    <div className='font-light max-sm:mt-10'>
-                        <h2 className='mb-5 font-bold'>Find Us</h2>
-                        <p>Bright Hurst Contracting LLC<br />Office No: 1203, Al Shatha Tower<br />Dubai Internet City, Dubai, UAE <br />P.O. Box: 123456</p>
-
-                        <div className='mt-11'>
-                            <h2 className='font-bold'>Social Media Links</h2>
-
-                            <div className='flex gap-5 mt-4 text-xl'>
-                                <FontAwesomeIcon icon={faFacebook} />
-                                <FontAwesomeIcon icon={faInstagram} />
-                                <FontAwesomeIcon icon={faLinkedin} />
-                                <FontAwesomeIcon icon={faYoutube} />
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* copyright */}
-                    <hr className="border-white mt-10 w-60 md:w-160 lg:w-340" />
-                    <h6 className='mt-5 w-full ms-1 font-extralight tracking-wider md:ms-45 md:mt-15'>© Bright Hurst 2025 All Rights Reserved</h6>
-                </div>
+            <div className="flex items-center justify-center gap-2 text-gray-400 mb-2">
+              <i className="fa-solid fa-phone text-[#C5A059]"></i>
+              <span>+91 940 061 3433</span>
             </div>
+
+            <div className="flex items-center justify-center gap-2 text-gray-400">
+              <i className="fa-solid fa-envelope text-[#C5A059]"></i>
+              <span>info@deepnetsoft.com</span>
+            </div>
+          </div>
+
+          <div className="border border-[#C5A059] rounded-xl p-6 flex flex-col items-center justify-center">
+
+            <img src="/Logo.png" className="w-16 mb-4" />
+
+            <h2 className="text-xl font-bold tracking-widest text-[#C5A059]">
+              DEEP NET SOFT
+            </h2>
+
+            <div className="flex gap-4 mt-4 text-gray-400 text-sm">
+              <FontAwesomeIcon icon={faFacebook} />
+              <FontAwesomeIcon icon={faInstagram} />
+              <FontAwesomeIcon icon={faTwitter} />
+              <FontAwesomeIcon icon={faYoutube} />
+            </div>
+
+          </div>
+
+          <div className="border border-[#C5A059] rounded-xl p-6">
+            <h3 className="text-[#C5A059] text-sm mb-4 tracking-wider">
+              FIND US
+            </h3>
+
+            <div className="flex items-start justify-center gap-2 text-gray-400">
+              <i className="fa-solid fa-location-dot text-[#C5A059] mt-1"></i>
+              <span className="text-left">
+                First floor, Geo infopark,<br />
+                Infopark EXPY, Kakkanad
+              </span>
+            </div>
+          </div>
+
         </div>
-    )
+      </div>
+
+      <div className="border-t border-gray-700 mt-10 py-4 px-4 text-sm text-gray-400 flex flex-col md:flex-row justify-between items-center max-w-6xl mx-auto">
+
+        <p>© 2026 Deepnetsoft Solutions. All rights reserved.</p>
+
+        <div className="flex gap-4 mt-2 md:mt-0">
+          <span>Terms & Conditions</span>
+          <span>Privacy Policy</span>
+        </div>
+
+      </div>
+
+    </div>
+  );
 }
 
-export default Footer
+export default Footer;

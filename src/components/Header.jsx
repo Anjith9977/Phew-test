@@ -1,49 +1,50 @@
-import React, { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import { Link } from "react-router";
+
 
 function Header() {
+  const [open, setOpen] = useState(false);
 
-    const [showMenu, setShowMenu] = useState(false)
+  return (
 
-    return (
-        <>
+    <header className="bg-[#121618] text-white px-6 py-4">
+      <div className="flex items-center justify-between">
 
-            <nav className='flex justify-between p-7 fixed top-0 left-0 w-full z-50 bg-white shadow-md'>
-                <div>
-                    <h1 className='text-3xl font-stretch-expanded font-bold text-[#24286B]'>LOGO</h1>
-                </div>
+        <h1 className="text-xl font-bold tracking-wide">
+          DEEPNETSOFT
+        </h1>
 
-                <div className='flex gap-7 px-8 font-light max-md:hidden'>
-                    <a href='#home' className='hover:text-[#24286B] cursor-pointer hover:underline'>HOME</a>
-                    <a href='#aboutUs' className='hover:text-[#24286B] cursor-pointer hover:underline'>ABOUT US</a>
-                    <h2 className='hover:text-[#24286B] cursor-pointer hover:underline'>OUR SERVICES</h2>
-                    <a href='#project' className='hover:text-[#24286B] cursor-pointer hover:underline'>OUR PROJECTS</a>
-                    <a href='#Testimonials' className='hover:text-[#24286B] cursor-pointer hover:underline'>TESTIMONIALS</a>
-                    <a href="#contact"><button className='btn bg-[#24286B] hover:bg-[#1a1e64] text-white rounded-3xl w-40 h-10'>CONTACT US</button></a>
-                </div>
+        <nav className="hidden md:flex gap-8 text-sm">
+          <a href="#" className="hover:text-[#C5A059]">HOME</a>
+          <a href="#" className="hover:text-[#C5A059]">MENU</a>
+          <a href="#" className="hover:text-[#C5A059]">MAKE A RESERVATION</a>
+          <a href="#" className="hover:text-[#C5A059]">CONTACT US</a>
+          <Link to="/add">
+            <button className="bg-[#C5A059] px-4 py-2 text-black rounded">
+              Add Menu
+            </button>
+          </Link>
+        </nav>
 
-                <button onClick={() => setShowMenu(!showMenu)} className='text-2xl md:hidden'>
-                    <FontAwesomeIcon icon={faBars} />
-                </button>
+        <button
+          className="md:hidden"
+          onClick={() => setOpen(!open)}
+        >
+          <FontAwesomeIcon icon={faBars} size="lg" />
+        </button>
+      </div>
 
-            </nav>
-
-            {
-                showMenu && (
-                    <div className='md:hidden fixed top-[72px] left-0 w-full z-40 bg-white shadow-lg p-5 space-y-4 flex flex-col'>
-                        <a href='#home' >HOME</a>
-                        <a href='#aboutUs' >ABOUT US</a>
-                        <a >OUR SERVICES</a>
-                        <a href='#project' >OUR PROJECTS</a>
-                        <a href='#Testimonials' >TESTIMONIALS</a>
-                       <button className="bg-[#24286B] text-white rounded-full px-6 py-2">CONTACT US</button>
-                    </div>
-                )
-            }
-
-        </>
-    )
+      {open && (
+        <div className="mt-4 flex flex-col gap-4 md:hidden text-sm">
+          <a href="#" className="hover:text-[#C5A059]">HOME</a>
+          <a href="#" className="hover:text-[#C5A059]">MENU</a>
+          <a href="#" className="hover:text-[#C5A059]">CONTACT</a>
+        </div>
+      )}
+    </header>
+  );
 }
 
-export default Header
+export default Header;

@@ -1,16 +1,55 @@
 import React from 'react'
+import Header from '../Components/Header'
+import HeroSection from '../Components/HeroSection'
+import MenuTabs from '../Components/MenuTabs'
+import { getMenusApi, getItemsApi } from '../services/Allapi'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import MainTab from '../Components/MainTab'
+import Footer from '../Components/Footer'
 
 function Home() {
+
+    const [menus, setMenus] = useState([])
+    const [selectedMenu, setSelectedMenu] = useState(null)
+    const [items, setItems] = useState([])
+
+    useEffect(() => {
+        fetchMenus()
+    }, [])
+
+    const fetchMenus = async () => {
+        const res = await getMenusApi()
+        const menuList = res.data
+
+        setMenus(menuList)
+        
+        if (menuList.length > 0) {
+            const firstMenuId = menuList[0]._id
+            setSelectedMenu(firstMenuId)
+
+            const itemRes = await getItemsApi(firstMenuId)
+            setItems(itemRes.data)
+        }
+    }
+
+    const MenuClick = async (menuId) => {
+        setSelectedMenu(menuId)
+        const res = await getItemsApi(menuId)
+        console.log(res);
+
+        setItems(res.data)
+    }
+
+
     return (
-        <div className='relative pt-24' id='home'>
-            <div className="w-full overflow-hidden">
-                <img src="/HomeImg.png" className="w-full h-[300px] sm:h-[400px] md:h-[600px] object-cover"/>
-            </div>
-            <div className='absolute flex flex-col items-center justify-center inset-0 text-white mt-20 md:mt-40'>
-                <h1 className='text-xl font-medium md:text-6xl'>Shaping the UAE’s future <br /> with precision & passion</h1>
-                <p className='mt-4 font-light'>Bright Hurst Contracting LLC delivers expert interior fit-out, MEP, and civil <br /> works across the UAE with a focus on quality, innovation, and integrity.</p>
-                <button className='bg-white text-black p-2 px-5 font-light rounded-3xl md:mt-5'>Get A Quote</button>
-            </div>
+        <div>
+            <Header />
+            <HeroSection />
+            <MenuTabs menus={menus} selectedMenu={selectedMenu} setSelectedMenu={MenuClick} />
+            <MainTab items={items} />
+            <Footer/>
+
         </div>
     )
 }
